@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './routes/App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "./routes/ErrorPage";
 import News from "./routes/News";
 import Profile from "./routes/Profile";
 import Login from "./routes/Login";
