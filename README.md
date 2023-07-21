@@ -11,4 +11,4 @@ This project was made with:
 
 ## Author
 
-Mykhaylo Voytenko [mykvoitenko@gmail.com](mailto:mykvoitenko@gmail.com)
+Mykhailo Voitenko [mykvoitenko@gmail.com](mailto:mykvoitenko@gmail.com)
