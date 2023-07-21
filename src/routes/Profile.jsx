@@ -1,19 +1,6 @@
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {useEffect} from "react";
 import {Paper, Typography} from "@mui/material";
 
 function Profile() {
-    const navigate = useNavigate();
-
-    const isAuthorized = useSelector((state) => state.auth.value);
-
-    useEffect(() => {
-        if (!isAuthorized) {
-            navigate('/login');
-        }
-    });
-
     return (
         <Paper elevation={3} sx={{m: '25px', p: '15px'}}>
             <Typography variant="h5" component="div">

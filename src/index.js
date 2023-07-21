@@ -10,6 +10,8 @@ import Login from "./routes/Login";
 import {Provider} from "react-redux";
 import store from './app/store'
 import Main from "./routes/Main";
+import RouteGuard from "./routes/RouteGuard";
+import RestrictedGuard from "./routes/RestrictedGuard";
 
 const router = createBrowserRouter([
     {
@@ -27,11 +29,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "profile",
-                element: <Profile/>,
+                element: (
+                    <RouteGuard
+                        redirectTo={'/login'}
+                    >
+                        <Profile/>
+                    </RouteGuard>
+                )
             },
             {
                 path: "login",
-                element: <Login/>,
+                element: (
+                    <RestrictedGuard
+                        redirectTo={'/profile'}
+                    >
+                        <Login/>
+                    </RestrictedGuard>
+                ),
             },
         ]
     },

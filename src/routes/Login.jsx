@@ -1,12 +1,10 @@
 import {Alert, AlertTitle, Box, Button, Paper, TextField} from "@mui/material";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
 import {loginAction} from "../features/auth/authSlice";
 import {useDispatch} from "react-redux";
 
 function Profile() {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch()
 
     const [login, setLogin] = useState('');
@@ -28,7 +26,6 @@ function Profile() {
             setErrorInLogin(true)
         } else {
             dispatch(loginAction());
-            navigate('/profile');
         }
     };
 
