@@ -1,5 +1,5 @@
 import {Alert, AlertTitle, Box, Button, Paper, TextField} from "@mui/material";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {loginAction} from "../features/auth/authSlice";
 import {useDispatch} from "react-redux";
 
@@ -7,8 +7,8 @@ function Profile() {
 
     const dispatch = useDispatch()
 
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
+    const loginRef = useRef(null);   //useRef instead of useState in order to avoid unnecessary renders
+    const passwordRef = useRef(null);
     const [errorInLogin, setErrorInLogin] = useState(false);
 
 
@@ -16,8 +16,8 @@ function Profile() {
         evt.preventDefault();
 
         const userInput = {
-            login: login,
-            password: password
+            login: loginRef.current.value,
+            password: passwordRef.current.value
         };
 
         const usersData = localStorage.getItem('users');
@@ -27,14 +27,6 @@ function Profile() {
         } else {
             dispatch(loginAction());
         }
-    };
-
-    const handleLoginChange = (evt) => {
-        setLogin(evt.target.value);
-    };
-
-    const handlePasswordChange = (evt) => {
-        setPassword(evt.target.value);
     };
 
     return (
@@ -64,8 +56,7 @@ function Profile() {
                             name="firstName"
                             type="text"
                             label="Логин"
-                            onChange={handleLoginChange}
-                            value={login}
+                            inputRef={loginRef}
                         />
                     </div>
                     <div>
@@ -74,8 +65,7 @@ function Profile() {
                             name="password"
                             type="password"
                             label="Пароль"
-                            onChange={handlePasswordChange}
-                            value={password}
+                            inputRef={passwordRef}
                         />
                     </div>
 
